@@ -1,20 +1,21 @@
 def sorter(arr,arr1,arr2):
     size=len(arr)
 
-    for i in range(size):
-        min_idx = i
+    for j in range(size):
 
-        for j in range(i + 1, size):
+        for i in range(size-j-1):
 
-            if arr[j] < arr[min_idx]:
-                min_idx = j
-            elif arr[j] == arr[min_idx]:
-                if arr1[j] > arr1[min_idx]:
-                    min_idx = j
+            if arr[i] > arr[i+1]:
+                arr[i],arr[i+1]=arr[i+1],arr[i]
+                arr1[i],arr1[i+1]=arr1[i+1],arr1[i]
+                arr2[i],arr2[i+1]=arr2[i+1],arr2[i]
 
-        arr[i], arr[min_idx] = arr[min_idx], arr[i]
-        arr1[i], arr1[min_idx] = arr1[min_idx], arr1[i]
-        arr2[i], arr2[min_idx] = arr2[min_idx], arr2[i]
+            elif arr[i] == arr[i+1]:
+                if arr1[i] < arr1[i+1]:
+                    arr1[i],arr1[i+1]=arr1[i+1],arr1[i]
+                    arr2[i],arr2[i+1]=arr2[i+1],arr2[i]
+                    arr[i],arr[i]=arr[i+1],arr[i]
+
     return (arr,arr1,arr2)
 
 
@@ -40,3 +41,4 @@ with open("input4.txt", "r") as file:
   # print(train_name)
   # print(train_destination)
   # print(departure_time)
+
